@@ -1,0 +1,5 @@
+This project is basically a posting app. First visit, you're prompted to login or enter as a guest. If you enter valid creds you can look
+at pieces of posts from other users, including their name, and the date of the post. 
+
+Users are authenticated using bcrypt, and if they are a member of the community, 
+then they can see the full post body.
