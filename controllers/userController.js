@@ -29,7 +29,7 @@ exports.user_sign_up = (req, res, next) => {
 };
 
 exports.user_log_in = passport.authenticate('local', {
-  successRedirect: '/', // redirect to this route if logged in
+  successRedirect: '/home', // redirect to this route if logged in
   failureRedirect: '/log-in', // redirect to this route if incorrect login
 });
 
