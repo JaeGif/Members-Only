@@ -2,10 +2,13 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
     <h1><%= title %></h1>
+    <% if (1 === 0) { %>
     <p>Welcome to <%= title %></p>
+    <!-- Redirect to appropriate views -->
+    <% } else { %><%- include('./partials/log-in.ejs') %><% } %>
   </body>
 </html>
