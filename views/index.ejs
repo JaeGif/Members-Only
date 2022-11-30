@@ -6,9 +6,9 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <% if (1 === 0) { %>
+    <% if (locals.user) { %>
     <p>Welcome to <%= title %></p>
-    <!-- Redirect to appropriate views -->
-    <% } else { %><%- include('./partials/log-in.ejs') %><% } %>
+    <%- include('./partials/full-view.ejs') %> <% } else { %><%-
+    include('./partials/log-in.ejs') %><% } %>
   </body>
 </html>

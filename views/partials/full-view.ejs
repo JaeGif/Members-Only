@@ -1,0 +1,16 @@
+<div>
+  <h1>Members Message Board</h1>
+  <% for( let i = 0; i < messages.length; i++ ) { %>
+  <div>
+    <h2><%= messages[i].title %></h2>
+    <p><%= messages[i].message %></p>
+    <span>
+      <%= messages[i].user %> <% if (messages[i].user.member ) { %>
+      <p>Member</p>
+      <% } else { %>
+      <p>Non-Member</p>
+      <% } %>
+    </span>
+  </div>
+  <% } %>
+</div>
