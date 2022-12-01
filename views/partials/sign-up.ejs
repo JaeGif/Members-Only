@@ -27,7 +27,9 @@
     </form>
     <div>
       <p>Already have an account?</p>
-      <a href="/">Log In</a>
+      <a <% if (locals.currentUser) { %>
+        href='/home' <% } else { %> href = '/' <% } %> >Log In</a
+      >
     </div>
   </body>
 </html>
