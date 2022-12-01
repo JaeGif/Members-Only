@@ -1,10 +1,16 @@
 <div>
   <h1>Members Message Board</h1>
-  <% if (baseView) { %>
-  <a href="/home/new"><button type="button">New</button></a>
+  <button id="new-post" type="button">New</button>
+  <div id="new-post-modal">
+    <h2>Something to say?</h2>
+    <form method="POST" action="/home">
+      <input placeholder="Title" name="title" type="text" required />
+      <input name="post" type="text" placeholder="What\'s up today?" required />
+      <button>Submit</button>
+    </form>
+  </div>
 
-  <% } else { %> <%- include('./partials/new-post.ejs') %> <% } %> <% for( let i
-  = 0; i < posts.length; i++ ) { %>
+  <% for( let i = 0; i < posts.length; i++ ) { %>
   <div>
     <h2><%= posts[i].title %></h2>
     <p><%= posts[i].message %></p>
