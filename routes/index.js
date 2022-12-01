@@ -15,8 +15,14 @@ router.get('/home', (req, res, next) => {
       }
       res.render('index', {
         posts: list_posts,
+        baseView: true,
       });
     });
+});
+router.get('/home/new', (req, res, next) => {
+  res.render('./partials/full-view', {
+    baseView: false,
+  });
 });
 
 module.exports = router;
