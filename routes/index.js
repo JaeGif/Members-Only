@@ -19,9 +19,15 @@ router.get('/home', (req, res, next) => {
       });
     });
 });
-router.get('/home/new', (req, res, next) => {
-  res.render('./partials/full-view', {
-    baseView: false,
+router.post('/home/new', (req, res, next) => {
+  console.log(req.body);
+  const post = new Post({
+    title: req.body.title,
+    message: req.body.post,
+    user: req.user,
+  }).save((err) => {
+    if (err) return next(err);
+    res.redirect('/home');
   });
 });
 
