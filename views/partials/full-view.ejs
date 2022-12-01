@@ -1,6 +1,8 @@
 <div>
   <h1>Members Message Board</h1>
+  <% if (locals.currentUser.member) { %>
   <button id="new-post" type="button">New</button>
+  <% } %>
   <div id="new-post-modal">
     <h2>Something to say?</h2>
     <form method="POST" action="/home/new">
@@ -9,8 +11,8 @@
       <button>Submit</button>
     </form>
   </div>
-
-  <% for( let i = 0; i < posts.length; i++ ) { %>
+  <% if (locals.currentUser.member) { %> <% for( let i = 0; i < posts.length;
+  i++ ) { %>
   <div>
     <h2><%= posts[i].title %></h2>
     <p><%= posts[i].message %></p>
@@ -24,5 +26,18 @@
       <% } %>
     </span>
   </div>
-  <% } %>
+  <% } %> <% } else { %> <% for( let i = 0; i < posts.length; i++ ) { %>
+  <div>
+    <h2><%= posts[i].title %></h2>
+    <p>Become a member to view</p>
+    <span
+      ><p><%= posts[i].user.userName %></p>
+      <% if (String(posts[i].createdAt) === String(posts[i].updatedAt)) { %>
+      <p><%= posts[i].createdAt %></p>
+      <% } else { %>
+      <p><em>edited: </em><%= posts[i].updatedAt %></p>
+      <% } %>
+    </span>
+  </div>
+  <% } %> <% } %>
 </div>
