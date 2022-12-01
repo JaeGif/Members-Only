@@ -14,6 +14,15 @@
   <div>
     <h2><%= posts[i].title %></h2>
     <p><%= posts[i].message %></p>
+    <span
+      ><p><%= posts[i].user.userName %></p>
+      <% if (String(posts[i].createdAt) === String(posts[i].updatedAt)) { %>
+      <p><%= posts[i].createdAt %></p>
+
+      <% } else { %>
+      <p><em>edited: </em><%= posts[i].updatedAt %></p>
+      <% } %>
+    </span>
   </div>
   <% } %>
 </div>
