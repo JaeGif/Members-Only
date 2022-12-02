@@ -1,0 +1,114 @@
+:root {
+  --grey-color: rgb(15, 15, 15);
+  --dark-blue: #0000a3;
+  --highlight-color: #df265e;
+  --button-color: rgb(40, 40, 40);
+  --new-dark: rgb(50, 50, 50);
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--grey-color);
+}
+h1 {
+  font-size: 2em;
+  line-height: 1;
+  color: white;
+}
+.options-bar {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 5px;
+}
+.board-container {
+  height: 75vh;
+  width: 100vw;
+  background-color: var(--new-dark);
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  border-top: ridge 5px var(--highlight-color);
+  border-bottom: ridge 5px var(--highlight-color);
+}
+.board {
+  background-color: black;
+  height: 100%;
+  width: 40vw;
+  margin-left: -2vw;
+  display: grid;
+  grid-template-columns: minmax(100px, 200px) minmax(100px, 200px) minmax(
+      100px,
+      200px
+    );
+  grid-template-rows: minmax(100px, 200px) minmax(100px, 200px) minmax(
+      100px,
+      200px
+    );
+  grid-gap: 5px;
+}
+.square {
+  background-color: var(--new-dark);
+  height: 100%;
+  width: 100%;
+}
+footer {
+  height: 7vh;
+  width: 100vw;
+  background-color: var(--grey-color);
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+button {
+  height: 3em;
+  width: 75px;
+  padding: 5px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--button-color);
+}
+#x,
+#o {
+  width: 75px;
+}
+.inactive {
+  color: white;
+}
+.active {
+  color: var(--highlight-color);
+}
+.options-bar > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.square p {
+  font-size: 7em;
+}
+#hidden-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 25%;
+  margin-top: calc(185.5px / 2);
+  height: fit-content;
+  width: 250px;
+  z-index: 1;
+  padding: 20px;
+  padding-top: 15px;
+  border-radius: 8px;
+  background-color: white;
+}
+#hidden-modal p {
+  font-size: 2em;
+}
