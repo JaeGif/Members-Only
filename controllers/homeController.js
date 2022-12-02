@@ -1,4 +1,5 @@
 const Post = require('../models/post');
+const User = require('../models/user');
 
 exports.home_get = (req, res, next) => {
   Post.find({})
@@ -27,4 +28,10 @@ exports.home_new_post = (req, res, next) => {
 
 exports.membership_get = (req, res, next) => {
   res.render('membership-application.ejs');
+};
+
+exports.membership_update = (req, res, next) => {
+  User.findOneAndUpdate({ _id: req.user._id }, { member: true }).then(
+    res.redirect('/home')
+  );
 };

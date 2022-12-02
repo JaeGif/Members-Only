@@ -9,7 +9,7 @@
     <script src="/javascripts/tictactoe.js" defer></script>
   </head>
   <body>
-    <h1>Here's your chance to join the club. Win TicTacToe and you're in.</h1>
+    <h1>Challenge: Win TicTacToe</h1>
     <div class="board-container">
       <div class="board">
         <button id="0" class="square"><p></p></button>
@@ -23,10 +23,13 @@
         <button id="8" class="square"><p></p></button>
       </div>
       <div class="player-won" style="display: none">
-        <a href="/home/membership/update">Claim Membership</a>
+        <form action="/home/membership/update" method="POST">
+          <input name="membershipStatus" type="hidden" value="true" />
+          <button>Claim Membership</button>
+        </form>
       </div>
       <div class="ai-won" style="display: none">
-        <a href="/">Too Bad</a>
+        <a href="/home">Too Bad</a>
       </div>
     </div>
   </body>

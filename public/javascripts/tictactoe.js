@@ -16,7 +16,7 @@ function playRound(e) {
   Gameboard.xFields.push(e.target.id);
   e.target.removeEventListener('click', playRound);
   e.target.textContent = 'x';
-  e.target.classList.add('x');
+  e.target.classList.add('active');
   if (checkForWin(Gameboard.xFields)) {
     const winningModal = document.getElementsByClassName('player-won')[0];
     winningModal.style.display = 'flex';
@@ -39,9 +39,9 @@ function aiRandom(callNum = 0) {
   Gameboard.yFields.push(aiChoice);
   const hitSquare = document.getElementById(`${aiChoice}`);
   hitSquare.textContent = 'o';
-  hitSquare.classList.add('o');
+  hitSquare.classList.add('active');
   hitSquare.removeEventListener('click', playRound);
-  if (checkForWin(Gameboard.yFields)) {
+  if (checkForWin(Gameboard.yFields) || checkForDraw()) {
     const winningModal = document.getElementsByClassName('ai-won')[0];
     winningModal.style.display = 'flex';
   }
@@ -77,5 +77,14 @@ function checkForWin(fieldChecked) {
   }
   return false;
 }
+function checkForDraw() {
+  let board = document.getElementsByClassName('square');
 
+  for (let i = 0; i < board.length; i++) {
+    if (!board[i].classList.contains('active')) {
+      return false;
+    }
+  }
+  return true;
+}
 initializeBoard();
