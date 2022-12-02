@@ -1,145 +1,81 @@
-const gameBoard = (() => {
-  let board = new Array(9).fill(null); // board is an array of 9 spaces
+class Gameboard {
+  static hitFields = [];
+  static xFields = [];
+  static yFields = [];
+}
 
-  const setField = (indexID, sign) => {
-    board[indexID] = sign;
-  };
+function initializeBoard() {
+  let board = document.getElementsByClassName('square');
 
-  const getFieldNode = (fieldIndex) => {
-    return board[fieldIndex];
-  };
+  for (let i = 0; i < board.length; i++) {
+    board[i].addEventListener('click', playRound);
+  }
+}
+function playRound(e) {
+  Gameboard.hitFields.push(e.target.id);
+  Gameboard.xFields.push(e.target.id);
+  e.target.removeEventListener('click', playRound);
+  e.target.textContent = 'x';
+  e.target.classList.add('x');
+  if (checkForWin(Gameboard.xFields)) {
+    const winningModal = document.getElementsByClassName('player-won')[0];
+    winningModal.style.display = 'flex';
+  } else {
+    aiRandom();
+  }
+}
 
-  return {
-    setField,
-    getFieldNode,
-    board,
-  };
-})();
-
-const gameController = (() => {
-  let gameisOver = false;
-  let round = 1;
-  const fieldNodeList = document.querySelectorAll('.square');
-  const resetButton = document.getElementById('play-again');
-
-  resetButton.addEventListener('click', () => {
-    location.reload();
-  });
-  for (let i = 0; i <= fieldNodeList.length - 1; i++) {
-    fieldNodeList[i].addEventListener(
-      'click',
-      (e) => {
-        fieldNodeList[i].id = `${i}`;
-        playRound(i, e, takeTurns());
-        updateEmptyFields();
-      },
-      { once: true }
-    ); // slick way to make the event only fire after the first click
+function aiRandom(callNum = 0) {
+  let aiChoice = String(Math.floor(Math.random() * 9));
+  for (let i = 0; i < Gameboard.hitFields.length; i++) {
+    if (aiChoice === Gameboard.hitFields[i]) {
+      if (callNum < 9) {
+        return aiRandom(callNum + 1);
+      }
+    }
   }
 
-  const playRound = (fieldIndex, target, sign) => {
-    if (gameisOver) {
-      return;
-    }
-    gameBoard.setField(fieldIndex, sign);
-    if (checkForWin(fieldIndex)) {
-      displayController.updateFieldDisplay(target, sign);
-      displayController.updateScoreDisplay(sign);
-      gameisOver = true;
-      return;
-    }
-    if (round < 9) {
-      displayController.updateFieldDisplay(target, sign);
-      round++;
-    } else if (round === 9) {
-      const draw = 'draw';
-      displayController.updateFieldDisplay(target, sign);
-      displayController.updateScoreDisplay(draw);
-      gameisOver = true;
-    }
-  };
+  Gameboard.hitFields.push(aiChoice);
+  Gameboard.yFields.push(aiChoice);
+  const hitSquare = document.getElementById(`${aiChoice}`);
+  hitSquare.textContent = 'o';
+  hitSquare.classList.add('o');
+  hitSquare.removeEventListener('click', playRound);
+  if (checkForWin(Gameboard.yFields)) {
+    const winningModal = document.getElementsByClassName('ai-won')[0];
+    winningModal.style.display = 'flex';
+  }
+}
 
-  const checkForWin = (fieldIndex) => {
-    const winConditions = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6],
-    ];
+function checkForWin(fieldChecked) {
+  let count = 0;
+  const winConditions = [
+    ['0', '1', '2'],
+    ['3', '4', '5'],
+    ['6', '7', '8'],
+    ['0', '3', '6'],
+    ['1', '4', '7'],
+    ['2', '5', '8'],
+    ['0', '4', '8'],
+    ['2', '4', '6'],
+  ];
+  for (let i = 0; i < winConditions.length; i++) {
+    for (let j = 0; j < 3; j++) {
+      if (fieldChecked.includes(winConditions[i][j])) {
+        count++;
+        if (count === 3) {
+          let board = document.getElementsByClassName('square');
 
-    return winConditions
-      .filter((combination) => combination.includes(fieldIndex))
-      .some((possibleCombination) =>
-        possibleCombination.every(
-          (index) => gameBoard.getFieldNode(index) === takeTurns()
-        )
-      );
-  };
-
-  const updateEmptyFields = () => {
-    const emptyFields = [];
-    gameBoard.board.filter((element, index) => {
-      if (element === null) {
-        emptyFields.push(index);
+          for (let i = 0; i < board.length; i++) {
+            board[i].removeEventListener('click', playRound);
+          }
+          return true;
+        }
       }
-    });
-    return emptyFields;
-  };
-
-  const takeTurns = () => {
-    if (round % 2 === 1) {
-      return 'x';
-    } else {
-      return 'o';
     }
-  };
-  return {
-    updateEmptyFields,
-    takeTurns,
-    playRound,
-  };
-})();
+    count = 0;
+  }
+  return false;
+}
 
-const displayController = (() => {
-  const scoreDisplayP = document.getElementById('score');
-  const modal = document.getElementById('hidden-modal');
-
-  const modalWinner = () => {
-    modal.style.display = 'flex';
-  };
-
-  const updateFieldDisplay = (eventTarget, sign) => {
-    eventTarget.target.firstChild.textContent = `${sign}`;
-    if (sign === 'x') {
-      eventTarget.target.firstChild.style.color = '#0000A3';
-    } else {
-      eventTarget.target.firstChild.style.color = '#DF265E';
-    }
-  };
-  const updateScoreDisplay = (winner) => {
-    if (winner === 'draw') {
-      scoreDisplayP.textContent = `It's a Draw!`;
-    } else {
-      scoreDisplayP.textContent = `The winner is ${winner}!`;
-    }
-    modalWinner();
-  };
-  return {
-    updateFieldDisplay,
-    updateScoreDisplay,
-    modalWinner,
-  };
-})();
-
-const Player = (sign) => {
-  const playerSign = () => {
-    return sign;
-  };
-  return {
-    playerSign,
-  };
-};
+initializeBoard();

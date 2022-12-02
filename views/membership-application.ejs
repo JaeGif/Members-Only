@@ -12,19 +12,21 @@
     <h1>Here's your chance to join the club. Win TicTacToe and you're in.</h1>
     <div class="board-container">
       <div class="board">
-        <button class="square"><p></p></button>
-        <button class="square"><p></p></button>
-        <button class="square"><p></p></button>
-        <button class="square"><p></p></button>
-        <button class="square"><p></p></button>
-        <button class="square"><p></p></button>
-        <button class="square"><p></p></button>
-        <button class="square"><p></p></button>
-        <button class="square"><p></p></button>
+        <button id="0" class="square"><p></p></button>
+        <button id="1" class="square"><p></p></button>
+        <button id="2" class="square"><p></p></button>
+        <button id="3" class="square"><p></p></button>
+        <button id="4" class="square"><p></p></button>
+        <button id="5" class="square"><p></p></button>
+        <button id="6" class="square"><p></p></button>
+        <button id="7" class="square"><p></p></button>
+        <button id="8" class="square"><p></p></button>
       </div>
-      <div id="hidden-modal">
-        <p id="score"></p>
-        <button id="play-again">Play Again?</button>
+      <div class="player-won" style="display: none">
+        <a href="/home/membership/update">Claim Membership</a>
+      </div>
+      <div class="ai-won" style="display: none">
+        <a href="/">Too Bad</a>
       </div>
     </div>
   </body>
