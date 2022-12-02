@@ -87,4 +87,5 @@ function checkForDraw() {
   }
   return true;
 }
+
 initializeBoard();
