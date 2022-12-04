@@ -11,7 +11,6 @@ exports.user_sign_up = (req, res, next) => {
     if (err) return next(err);
     // otherwise, store hashedPassword in DB
     else {
-      console.log(req.body);
       const user = new User({
         firstName: req.body.firstname,
         lastName: req.body.lastname,
