@@ -67,9 +67,10 @@ a {
 .create-acct-btn {
   height: 40px;
   width: 100%;
-  background-color: rgb(105, 105, 255);
+  background-color: rgb(42, 42, 152);
   border-radius: 3px;
   border: none;
+  color: white;
   font-size: 1.25rem;
 }
 .submit-button:hover,
@@ -97,13 +98,14 @@ a {
   color: #333333;
 }
 .create-acct-btn {
-  background-color: green;
+  background-color: rgb(1, 121, 1);
+  color: white;
 }
 
+/* Posts */
 #new-post-modal {
   display: none;
 }
-
 .post-card {
   border: 1px solid rgb(255, 0, 0);
 }
