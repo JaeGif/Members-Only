@@ -1,9 +1,28 @@
-<h1>Already a member?</h1>
-<form action="/users/log-in" method="POST">
-  <label for="username">Username</label>
-  <input name="username" placeholder="username" type="text" />
-  <label for="password">Password</label>
-  <input name="password" type="password" />
-  <button>Log In</button>
-</form>
-<a href="/users/sign-up">Create Account</a>
+<div class="log-in-container">
+  <div class="sign-in-modal">
+    <h1 class="brand-font">Members Only</h1>
+    <h1>Already a member?</h1>
+    <form action="/users/log-in" method="POST">
+      <div class="form-alignment">
+        <input
+          class="text-input"
+          name="username"
+          placeholder="Username"
+          aria-label="username"
+          type="text"
+          required
+        />
+        <input
+          class="text-input"
+          name="password"
+          type="password"
+          aria-label="password"
+          placeholder="Password"
+          required
+        />
+        <button class="submit-button">Log In</button>
+      </div>
+    </form>
+    <a class="create-acct-redirect" href="/users/sign-up">Create Account</a>
+  </div>
+</div>

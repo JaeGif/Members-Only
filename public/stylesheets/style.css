@@ -1,8 +1,82 @@
-body {
-  padding: 50px;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+@font-face {
+  font-family: 'shadowsToLight';
+  src: url(../fonts/Shadows_Into_Light/ShadowsIntoLight-Regular.ttf);
 }
-
+@font-face {
+  font-family: 'ubuntu-mono';
+  src: url('../fonts/Shadows_Into_Light/Ubuntu_Mono/UbuntuMono-Regular.ttf');
+}
+@font-face {
+  font-family: 'major-mono';
+  src: url('../fonts/Shadows_Into_Light/Major_Mono_Display/MajorMonoDisplay-Regular.ttf');
+}
+* {
+  font-family: 'ubuntu-mono', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.brand-font {
+  font-family: 'major-mono', 'Courier New', Courier, monospace;
+}
+.log-in-container {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sign-in-modal {
+  background-color: rgb(252, 252, 252);
+  box-shadow: #b3b3b3 1px 1px 10px;
+  border-radius: 3px;
+  padding: 1vh;
+  min-width: 30vw;
+  max-width: 95vw;
+  min-height: 60vh;
+  max-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+form {
+  width: 75%;
+}
+a {
+  text-decoration: none;
+}
+.form-alignment {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  height: 100%;
+  width: 100%;
+}
+.submit-button {
+  height: 40px;
+  width: 100%;
+  background-color: rgb(105, 105, 255);
+  border-radius: 3px;
+  border: none;
+  font-size: 1.25rem;
+}
+.submit-button:hover {
+  opacity: 90%;
+  cursor: pointer;
+}
+.text-input {
+  height: 35px;
+  font-size: 1.25rem;
+}
+.create-acct-redirect {
+  font-size: 1.25rem;
+}
 #new-post-modal {
   display: none;
 }
