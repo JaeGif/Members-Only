@@ -12,23 +12,24 @@
     <h1>Challenge: Win TicTacToe</h1>
     <div class="board-container">
       <div class="board">
-        <button id="0" class="square"><p></p></button>
-        <button id="1" class="square"><p></p></button>
-        <button id="2" class="square"><p></p></button>
-        <button id="3" class="square"><p></p></button>
-        <button id="4" class="square"><p></p></button>
-        <button id="5" class="square"><p></p></button>
-        <button id="6" class="square"><p></p></button>
-        <button id="7" class="square"><p></p></button>
-        <button id="8" class="square"><p></p></button>
+        <button id="0" class="square"></button>
+        <button id="1" class="square"></button>
+        <button id="2" class="square"></button>
+        <button id="3" class="square"></button>
+        <button id="4" class="square"></button>
+        <button id="5" class="square"></button>
+        <button id="6" class="square"></button>
+        <button id="7" class="square"></button>
+        <button id="8" class="square"></button>
       </div>
-      <div class="player-won" style="display: none">
+      <div class="player-won">
         <form action="/home/membership/update" method="POST">
           <input name="membershipStatus" type="hidden" value="true" />
+          <h1>Congratulations! You won TicTacToe.</h1>
           <button>Claim Membership</button>
         </form>
       </div>
-      <div class="ai-won" style="display: none">
+      <div class="ai-won">
         <a href="/home">Too Bad</a>
       </div>
     </div>

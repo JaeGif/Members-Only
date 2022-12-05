@@ -17,45 +17,36 @@
 body {
   height: 100vh;
   width: 100vw;
+  margin: 0;
+  padding: 0;
   background-color: var(--grey-color);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 h1 {
   font-size: 2em;
   line-height: 1;
   color: white;
-}
-.options-bar {
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 5px;
+  text-align: center;
 }
 .board-container {
   height: 75vh;
-  width: 100vw;
+  width: 100%;
   background-color: var(--new-dark);
   display: flex;
   justify-content: center;
-  padding: 20px;
-  border-top: ridge 5px var(--highlight-color);
-  border-bottom: ridge 5px var(--highlight-color);
+  align-items: center;
+  flex: 1;
+  position: relative;
 }
 .board {
   background-color: black;
-  height: 100%;
-  width: 40vw;
-  margin-left: -2vw;
+  width: 40%;
+  height: 75vh;
   display: grid;
-  grid-template-columns: minmax(100px, 200px) minmax(100px, 200px) minmax(
-      100px,
-      200px
-    );
-  grid-template-rows: minmax(100px, 200px) minmax(100px, 200px) minmax(
-      100px,
-      200px
-    );
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 5px;
 }
 .square {
@@ -64,15 +55,20 @@ h1 {
   width: 100%;
   font-size: 2em;
 }
-footer {
-  height: 7vh;
-  width: 100vw;
-  background-color: var(--grey-color);
-  margin-top: auto;
+.player-won,
+.ai-won {
   display: flex;
+  position: absolute;
+  background-color: white;
+  color: black;
+  z-index: 2;
   justify-content: center;
   align-items: center;
-  color: white;
+  flex-direction: column;
+  border: solid red 1px;
+}
+.ai-won {
+  display: none;
 }
 
 button {
@@ -85,42 +81,12 @@ button {
   align-items: center;
   background-color: var(--button-color);
 }
-#x,
-#o {
-  width: 75px;
-}
+
 .inactive {
   color: white;
 }
 .active {
   color: var(--highlight-color);
-}
-.options-bar > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-.square p {
-  font-size: 7em;
-}
-#hidden-modal {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  position: fixed;
-  top: 25%;
-  margin-top: calc(185.5px / 2);
-  height: fit-content;
-  width: 250px;
-  z-index: 1;
-  padding: 20px;
-  padding-top: 15px;
-  border-radius: 8px;
-  background-color: white;
-}
-#hidden-modal p {
-  font-size: 2em;
 }
 
 /* button animations from eludadev/uibuttons with slight modifications for this project */
