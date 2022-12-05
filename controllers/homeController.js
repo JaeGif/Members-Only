@@ -1,6 +1,10 @@
 const Post = require('../models/post');
 const User = require('../models/user');
 
+exports.index_get = (req, res, next) => {
+  res.redirect('/home');
+};
+
 exports.home_get = (req, res, next) => {
   Post.find({})
     .populate('user')
@@ -15,7 +19,6 @@ exports.home_get = (req, res, next) => {
 };
 
 exports.home_new_post = (req, res, next) => {
-  console.log(req.body);
   const post = new Post({
     title: req.body.title,
     message: req.body.post,

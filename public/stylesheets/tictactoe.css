@@ -5,6 +5,15 @@
   --button-color: rgb(40, 40, 40);
   --new-dark: rgb(50, 50, 50);
 }
+@font-face {
+  font-family: 'ubuntu-mono';
+  src: url('../fonts/Shadows_Into_Light/Ubuntu_Mono/UbuntuMono-Regular.ttf');
+}
+
+* {
+  font-family: 'ubuntu-mono', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 body {
   height: 100vh;
   width: 100vw;

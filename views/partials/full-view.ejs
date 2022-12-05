@@ -13,21 +13,23 @@
   </div>
   <% if (locals.currentUser.member) { %> <% for( let i = 0; i < posts.length;
   i++ ) { %>
-  <div>
+  <div class="post-card">
     <h2><%= posts[i].title %></h2>
     <p><%= posts[i].message %></p>
-    <span
+    <span class="about-post-span"
       ><p><%= posts[i].user.userName %></p>
       <% if (String(posts[i].createdAt) === String(posts[i].updatedAt)) { %>
       <p><%= posts[i].createdAt %></p>
       <% } else { %>
       <p><em>edited: </em><%= posts[i].updatedAt %></p>
       <% } %> <% console.log('user: ', locals.currentUser._id, ':',
-      posts[i].user._id) %> <% if
-      (locals.currentUser._id.equals(posts[i].user._id)) { %>
-      <a href="<% `/home/message/${posts[i]._id}/edit` %>">Edit</a>
+      posts[i].user._id) %>
+    </span>
+    <span>
+      <% if (locals.currentUser._id.equals(posts[i].user._id)) { %>
+      <a href="<% `/home/posts/${posts[i]._url}/edit` %>">Edit</a>
       <% } %> <% if (locals.currentUser.isAdmin) { %>
-      <a href="<% `/home/message/${posts[i]._id}/delete` %>">Delete</a>
+      <a href="<% `/home/posts/${posts[i]._url}/delete` %>">Delete</a>
       <% } %>
     </span>
   </div>

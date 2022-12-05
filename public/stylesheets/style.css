@@ -31,7 +31,8 @@ body {
   justify-content: center;
   align-items: center;
 }
-.sign-in-modal {
+.sign-in-modal,
+.sign-up-modal {
   background-color: rgb(252, 252, 252);
   box-shadow: #b3b3b3 1px 1px 10px;
   border-radius: 3px;
@@ -43,6 +44,10 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+.sign-up-modal {
+  min-height: 65vh;
+  max-height: 100vh;
 }
 form {
   width: 75%;
@@ -79,4 +84,12 @@ a {
 }
 #new-post-modal {
   display: none;
+}
+
+.post-card {
+  border: 1px solid rgb(255, 0, 0);
+}
+.about-post-span {
+  border: solid 1px green;
+  display: flex;
 }
