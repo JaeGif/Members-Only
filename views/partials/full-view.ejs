@@ -24,7 +24,7 @@
       <% } else { %>
       <p><em>edited: </em><%= posts[i].updatedAt %></p>
       <% } %>
-      <a href="<%/home/message/`${posts[i]._id}`/edit %>">Edit</a>
+      <a href="<% `/home/message/${posts[i]._id}/edit` %>">Edit</a>
     </span>
   </div>
   <% } %> <% } else { %> <a href="/home/membership">Earn a Membership</a>
