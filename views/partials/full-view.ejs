@@ -20,11 +20,15 @@
       ><p><%= posts[i].user.userName %></p>
       <% if (String(posts[i].createdAt) === String(posts[i].updatedAt)) { %>
       <p><%= posts[i].createdAt %></p>
-
       <% } else { %>
       <p><em>edited: </em><%= posts[i].updatedAt %></p>
-      <% } %>
+      <% } %> <% console.log('user: ', locals.currentUser._id, ':',
+      posts[i].user._id) %> <% if
+      (locals.currentUser._id.equals(posts[i].user._id)) { %>
       <a href="<% `/home/message/${posts[i]._id}/edit` %>">Edit</a>
+      <% } %> <% if (locals.currentUser.isAdmin) { %>
+      <a href="<% `/home/message/${posts[i]._id}/delete` %>">Delete</a>
+      <% } %>
     </span>
   </div>
   <% } %> <% } else { %> <a href="/home/membership">Earn a Membership</a>

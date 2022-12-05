@@ -17,6 +17,7 @@ exports.user_sign_up = (req, res, next) => {
         userName: req.body.username,
         password: hashedPassword,
         member: false,
+        isAdmin: false,
       }).save((err) => {
         if (err) {
           return next(err);
