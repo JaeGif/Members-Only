@@ -4,13 +4,15 @@
     <title>Members Only</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/posts.css" />
+    <link rel="stylesheet" href="/stylesheets/layout.css" />
+    <link rel="stylesheet" href="/stylesheets/options-bar.css" />
 
     <script src="/javascripts/script.js" defer></script>
   </head>
   <body>
     <% if (locals.currentUser) { %>
     <h2>- Welcome <%= locals.currentUser.userName %> -</h2>
-    <div>
+    <div class="main-page-body">
       <%- include('./partials/options-bar.ejs') %> <%-
       include('./partials/full-view.ejs') %>
     </div>

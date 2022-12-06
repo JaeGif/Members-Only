@@ -1,0 +1,41 @@
+#new-post {
+  background-color: white;
+  border: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: fit-content;
+  padding: 0;
+  width: 50%;
+}
+#new-post:hover {
+  cursor: pointer;
+}
+#new-post p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  border-radius: 40%;
+  height: 50px;
+  font-size: 2rem;
+  padding-bottom: 3px;
+  font-weight: bold;
+  border: solid 3px black;
+  line-height: 3rem;
+  transition: 0.25s ease-in-out transform;
+}
+
+#new-post:hover p {
+  transform: scale(102%);
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: var(--post-width);
+  max-width: 100vw;
+  padding: 15px;
+  height: 30px;
+}
