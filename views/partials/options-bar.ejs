@@ -1,0 +1,12 @@
+<div>
+  <% if (locals.currentUser.member) { %>
+  <div class="btn-container">
+    <button id="new-post" type="button">
+      <p>+</p>
+      <h2>New Post</h2>
+    </button>
+  </div>
+  <% } else { %>
+  <a href="/home/membership">Earn a Membership</a>
+  <% } %>
+</div>

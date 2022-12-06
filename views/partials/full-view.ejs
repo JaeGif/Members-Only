@@ -1,51 +1,64 @@
-<div>
+<div class="message-board-container">
   <h1>Members Message Board</h1>
-  <% if (locals.currentUser.member) { %>
-  <button id="new-post" type="button">New</button>
-  <% } %>
+
   <div id="new-post-modal">
     <h2>Something to say?</h2>
-    <form method="POST" action="/home/new">
-      <input placeholder="Title" name="title" type="text" required />
-      <input name="post" type="text" placeholder="What\'s up today?" required />
-      <button>Submit</button>
+    <form class="post-form" method="POST" action="/home/new">
+      <div class="new-post-card">
+        <input
+          class="text-input-posts"
+          placeholder="Title"
+          name="title"
+          type="text"
+          required
+        />
+        <textarea
+          class="text-area-input"
+          name="post"
+          type="text"
+          placeholder="What's up today?"
+          required
+        ></textarea>
+        <button class="submit-post-btn">Submit</button>
+      </div>
     </form>
   </div>
-  <% if (locals.currentUser.member) { %> <% for( let i = 0; i < posts.length;
-  i++ ) { %>
-  <div class="post-card">
-    <h2><%= posts[i].title %></h2>
-    <p><%= posts[i].message %></p>
-    <span class="about-post-span"
-      ><p><%= posts[i].user.userName %></p>
-      <% if (String(posts[i].createdAt) === String(posts[i].updatedAt)) { %>
-      <p><%= posts[i].createdAt %></p>
-      <% } else { %>
-      <p><em>edited: </em><%= posts[i].updatedAt %></p>
-      <% } %> <% console.log('user: ', locals.currentUser._id, ':',
-      posts[i].user._id) %>
-    </span>
-    <span>
-      <% if (locals.currentUser._id.equals(posts[i].user._id)) { %>
-      <a href="<% `/home/posts/${posts[i]._url}/edit` %>">Edit</a>
-      <% } %> <% if (locals.currentUser.isAdmin) { %>
-      <a href="<% `/home/posts/${posts[i]._url}/delete` %>">Delete</a>
-      <% } %>
-    </span>
+  <div class="posts-wrapper">
+    <% if (locals.currentUser.member) { %> <% for( let i = 0; i < posts.length;
+    i++ ) { %>
+    <div class="post-card">
+      <h2 class="post-title"><%= posts[i].title %></h2>
+      <p class="post-message"><%= posts[i].message %></p>
+      <span class="about-post-span"
+        ><p class="post-user"><em><%= posts[i].user.userName %></em></p>
+        <% if (String(posts[i].createdAt) === String(posts[i].updatedAt)) { %>
+        <p class="post-date"><%= posts[i].createdAt %></p>
+        <% } else { %>
+        <p class="post-date"><em>edited: </em><%= posts[i].updatedAt %></p>
+        <% } %> <% console.log('user: ', locals.currentUser._id, ':',
+        posts[i].user._id) %>
+      </span>
+      <span>
+        <% if (locals.currentUser._id.equals(posts[i].user._id)) { %>
+        <a href="<% `/home/posts/${posts[i]._url}/edit` %>">Edit</a>
+        <% } %> <% if (locals.currentUser.isAdmin) { %>
+        <a href="<% `/home/posts/${posts[i]._url}/delete` %>">Delete</a>
+        <% } %>
+      </span>
+    </div>
+    <% } %> <% } else { %> <% for( let i = 0; i < posts.length; i++ ) { %>
+    <div>
+      <h2><%= posts[i].title %></h2>
+      <p>Become a member to view</p>
+      <span
+        ><p><%= posts[i].user.userName %></p>
+        <% if (String(posts[i].createdAt) === String(posts[i].updatedAt)) { %>
+        <p><%= posts[i].createdAt %></p>
+        <% } else { %>
+        <p><em>edited: </em><%= posts[i].updatedAt %></p>
+        <% } %>
+      </span>
+    </div>
+    <% } %> <% } %>
   </div>
-  <% } %> <% } else { %> <a href="/home/membership">Earn a Membership</a>
-  <% for( let i = 0; i < posts.length; i++ ) { %>
-  <div>
-    <h2><%= posts[i].title %></h2>
-    <p>Become a member to view</p>
-    <span
-      ><p><%= posts[i].user.userName %></p>
-      <% if (String(posts[i].createdAt) === String(posts[i].updatedAt)) { %>
-      <p><%= posts[i].createdAt %></p>
-      <% } else { %>
-      <p><em>edited: </em><%= posts[i].updatedAt %></p>
-      <% } %>
-    </span>
-  </div>
-  <% } %> <% } %>
 </div>

@@ -101,15 +101,3 @@ a {
   background-color: rgb(1, 121, 1);
   color: white;
 }
-
-/* Posts */
-#new-post-modal {
-  display: none;
-}
-.post-card {
-  border: 1px solid rgb(255, 0, 0);
-}
-.about-post-span {
-  border: solid 1px green;
-  display: flex;
-}

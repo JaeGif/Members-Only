@@ -3,12 +3,17 @@
   <head>
     <title>Members Only</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/posts.css" />
+
     <script src="/javascripts/script.js" defer></script>
   </head>
   <body>
     <% if (locals.currentUser) { %>
-    <p>Welcome <%= locals.currentUser.userName %></p>
-    <%- include('./partials/full-view.ejs') %> <% } else { %><%-
-    include('./partials/log-in.ejs') %><% } %>
+    <h2>- Welcome <%= locals.currentUser.userName %> -</h2>
+    <div>
+      <%- include('./partials/options-bar.ejs') %> <%-
+      include('./partials/full-view.ejs') %>
+    </div>
+    <% } else { %><%- include('./partials/log-in.ejs') %><% } %>
   </body>
 </html>
