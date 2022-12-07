@@ -19,6 +19,7 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
 }
 .brand-font {
   font-family: 'major-mono', 'Courier New', Courier, monospace;
