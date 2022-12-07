@@ -2,8 +2,8 @@ const Post = require('../models/post');
 const User = require('../models/user');
 const relativeTime = require('dayjs/plugin/relativeTime');
 const dayjs = require('dayjs');
-const { Dayjs } = require('dayjs');
 const async = require('async');
+const { body, validationResult } = require('express-validator');
 
 dayjs.extend(relativeTime);
 exports.index_get = (req, res, next) => {
@@ -26,10 +26,14 @@ exports.home_get = (req, res, next) => {
             let updatedFormatted = dayjs().to(dayjs(list_posts[i].updatedAt));
             list_posts[i] = {
               ...list_posts[i]._doc,
-              ...{ createdAt: createdFormatted, updatedAt: updatedFormatted },
+              ...{
+                createdAt: createdFormatted,
+                updatedAt: updatedFormatted,
+                url: list_posts[i].url, // making a copy doesn't persist the url, so the url needs to be manually readded to your local copy
+              },
             };
           } catch (error) {
-            console.log(error);
+            console.log('error', error);
           }
         }
 
@@ -49,6 +53,31 @@ exports.home_new_post = (req, res, next) => {
     if (err) return next(err);
     res.redirect('/home');
   });
+};
+exports.post_edit_get = (req, res, next) => {
+  Post.findById(req.params.id).exec(function (err, post_details) {
+    if (err) {
+      return next(err);
+    }
+    console.log(post_details);
+    res.render('./partials/edit-post.ejs', {
+      title: post_details.title,
+      message: post_details.message,
+    });
+  });
+
+  // stuff is going here fer sure, sends back the
+  console.log(req.body);
+};
+
+exports.post_edit_post = (req, res, next) => {
+  // find the post and update the doc in Mongod.
+};
+exports.post_delete_get = (req, res, next) => {
+  // display an "are you sure?" for the post.
+};
+exports.post_delete_post = (req, res, next) => {
+  // find the post and update the doc in Mongod.
 };
 
 exports.membership_get = (req, res, next) => {
