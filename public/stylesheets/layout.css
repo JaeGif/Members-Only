@@ -1,5 +1,9 @@
 .main-page-body {
   display: grid;
-  grid-template-columns: 1fr 2fr 1.5fr;
+  grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 1fr;
+}
+.message-board-container {
+  grid-column: 2/3;
+  border: solid 1px green;
 }

@@ -4,14 +4,12 @@ function newPost() {
 
   newBtn.addEventListener('click', () => {
     newPostModal.style.display = 'flex';
-    newBtn.style.display = 'none';
   });
 }
 function deleteBtnModal() {
   const deleteModalInit = document.getElementsByClassName('delete-popup-init');
   const deleteModal = document.getElementsByClassName('delete-modal');
   const closeModal = document.getElementsByClassName('return-delete-btn');
-  const editBtn = document.getElementsByClassName('edit-popup-init');
 
   for (let i = 0; i < deleteModalInit.length; i++) {
     deleteModalInit[i].addEventListener('click', () => {

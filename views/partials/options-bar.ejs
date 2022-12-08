@@ -1,10 +1,38 @@
-<div>
+<div class="options-sidebar">
   <% if (locals.currentUser.member) { %>
   <div class="btn-container">
-    <button id="new-post" type="button">
-      <p>+</p>
-      <h2>New Post</h2>
-    </button>
+    <span id="new-post" class="option-span">
+      <img class="options-icons" src="/icons/add.svg" />
+      <h2>New</h2>
+    </span>
+  </div>
+  <div>
+    <a href="/home">
+      <span class="option-span">
+        <img class="options-icons" src="/icons/home.svg" alt="home" />
+        <h2>Home</h2>
+      </span>
+    </a>
+  </div>
+  <div>
+    <a href="/user/<%= locals.currentUser.url %>">
+      <span class="option-span">
+        <img
+          class="options-icons"
+          src="/icons/account.svg"
+          alt="user account"
+        />
+        <h2>Account</h2>
+      </span>
+    </a>
+  </div>
+  <div>
+    <a href="https://github.com/JaeGif" target="_blank" rel="noreferrer">
+      <span class="option-span">
+        <img class="options-icons" src="/icons/github.png" alt="user account" />
+        <h2>Creator's Github</h2>
+      </span>
+    </a>
   </div>
   <% } else { %>
   <a href="/home/membership">Earn a Membership</a>
