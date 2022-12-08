@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/posts.css" />
+    <link rel="stylesheet" href="/stylesheets/layout.css" />
+    <link rel="stylesheet" href="/stylesheets/options-bar.css" />
+
+    <title>Members Only</title>
+  </head>
+  <body>
+    <%- include('./partials/options-bar.ejs') %>
+    <div id="new-post-modal" style="display: flex">
+      <h2>Made a mistake?</h2>
+      <form class="post-form" method="POST" action="<%= url %>/edit/submit">
+        <div class="new-post-card">
+          <input
+            class="text-input-posts"
+            name="title"
+            type="text"
+            value="<%= title %>"
+            required
+          />
+          <textarea class="text-area-input" name="post" type="text" required>
+<%= message %></textarea
+          >
+          <button class="submit-post-btn">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

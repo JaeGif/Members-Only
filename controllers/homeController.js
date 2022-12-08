@@ -59,20 +59,33 @@ exports.post_edit_get = (req, res, next) => {
     if (err) {
       return next(err);
     }
-    console.log(post_details);
-    res.render('./partials/edit-post.ejs', {
+
+    res.render('edit-post.ejs', {
       title: post_details.title,
       message: post_details.message,
+      url: post_details.url,
     });
   });
 
   // stuff is going here fer sure, sends back the
-  console.log(req.body);
 };
 
 exports.post_edit_post = (req, res, next) => {
-  // find the post and update the doc in Mongod.
+  console.log(req.body);
+  console.log('looking for doc');
+  try {
+    Post.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        title: req.body.title,
+        message: req.body.post,
+      }
+    ).then(res.redirect('/home'));
+  } catch (error) {
+    console.log('error: ', error);
+  }
 };
+
 exports.post_delete_get = (req, res, next) => {
   // display an "are you sure?" for the post.
 };
