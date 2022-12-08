@@ -71,8 +71,6 @@ exports.post_edit_get = (req, res, next) => {
 };
 
 exports.post_edit_post = (req, res, next) => {
-  console.log(req.body);
-  console.log('looking for doc');
   try {
     Post.findOneAndUpdate(
       { _id: req.params.id },
@@ -85,12 +83,12 @@ exports.post_edit_post = (req, res, next) => {
     console.log('error: ', error);
   }
 };
-
-exports.post_delete_get = (req, res, next) => {
-  // display an "are you sure?" for the post.
-};
 exports.post_delete_post = (req, res, next) => {
-  // find the post and update the doc in Mongod.
+  try {
+    Post.findOneAndDelete({ _id: req.params.id }).then(res.redirect('/home'));
+  } catch (error) {
+    console.log('error: ', error);
+  }
 };
 
 exports.membership_get = (req, res, next) => {
