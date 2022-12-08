@@ -56,11 +56,53 @@
   height: 30px;
   cursor: pointer;
 }
-.post-title {
+
+.return-delete {
+  display: flex;
+  justify-content: end;
+  width: 100%;
 }
-.post-message {
+.return-delete img {
+  height: 20px;
+  width: auto;
+  cursor: pointer;
 }
-.post-user {
+.delete-popup-init {
+  cursor: pointer;
 }
-.post-date {
+.delete-modal {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.delete-warning-popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.form-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.delete-btn {
+  width: 50%;
+  height: 30px;
+  cursor: pointer;
+  background-color: rgb(187, 187, 187);
+  color: rgb(162, 0, 0);
+  border: none;
+}
+.delete-btn:hover {
+  opacity: 90%;
+}
+.delete-popup-init,
+.edit-popup-init {
+  height: 20px;
+  width: auto;
 }

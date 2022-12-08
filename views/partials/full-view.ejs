@@ -40,9 +40,29 @@
       </span>
       <span>
         <% if (locals.currentUser._id.equals(posts[i].user._id)) { %>
-        <a href="<%= posts[i].url %>/edit">Edit</a>
-        <% } %> <% if (locals.currentUser.isAdmin) { %>
-        <a href="<%= posts[i].url %>/delete">Delete</a>
+        <a href="<%= posts[i].url %>/edit"
+          ><img class="edit-popup-init" src="/icons/edit.svg" alt="edit"
+        /></a>
+        <% } %> <% if (locals.currentUser.isAdmin ||
+        locals.currentUser._id.equals(posts[i].user._id)) { %>
+        <img class="delete-popup-init" src="/icons/delete.svg" alt="delete" />
+        <div class="delete-modal">
+          <div class="delete-warning-popup">
+            <span class="return-delete"
+              ><img class="return-delete-btn" src="/icons/close.svg" alt="x"
+            /></span>
+            <h1>Are you sure?</h1>
+            <p>This can't be undone.</p>
+          </div>
+          <form
+            class="form-delete"
+            method="POST"
+            action="<%= posts[i].url %>/delete/submit"
+          >
+            <input value="submit" type="hidden" />
+            <button class="delete-btn">Delete</button>
+          </form>
+        </div>
         <% } %>
       </span>
     </div>
