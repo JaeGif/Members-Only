@@ -15,7 +15,9 @@ const User = require('./models/user');
 const MongoStore = require('connect-mongo');
 
 const mongoDb = process.env.MONGO_CONNECT;
-mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose
+  .connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true })
+  .then(console.log('connected'));
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo connection error'));
