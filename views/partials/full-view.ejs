@@ -66,19 +66,22 @@
         <% } %>
       </span>
     </div>
+
     <% } %> <% } else { %> <% for( let i = 0; i < posts.length; i++ ) { %>
-    <div>
-      <h2><%= posts[i].title %></h2>
-      <p>Become a member to view</p>
-      <span
-        ><p><%= posts[i].user.userName %></p>
-        <% if (String(posts[i].createdAt) === String(posts[i].updatedAt)) { %>
-        <p><%= posts[i].createdAt %></p>
-        <% } else { %>
-        <p><em>edited: </em><%= posts[i].updatedAt %></p>
-        <% } %>
-      </span>
+    <div class="posts-wrapper">
+      <div class="post-card">
+        <h2><%= posts[i].title %></h2>
+        <p>Become a member to view</p>
+        <span class="posts-span"
+          ><p><%= posts[i].user.userName %></p>
+          <% if (String(posts[i].createdAt) === String(posts[i].updatedAt)) { %>
+          <p><%= posts[i].createdAt %></p>
+          <% } else { %>
+          <p><em>edited: </em><%= posts[i].updatedAt %></p>
+          <% } %>
+        </span>
+      </div>
+      <% } %> <% } %>
     </div>
-    <% } %> <% } %>
   </div>
 </div>
