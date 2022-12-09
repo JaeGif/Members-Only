@@ -12,11 +12,11 @@ require('dotenv').config();
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const User = require('./models/user');
+const MongoStore = require('connect-mongo')(session);
 
 const mongoDb = process.env.MONGO_CONNECT;
-mongoose
-  .connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true })
-  .then(console.log('connected to MongoDB'));
+mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
+
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo connection error'));
 
@@ -38,11 +38,9 @@ passport.use(
       bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
           // passwords match! log user in
-          console.log('login success');
           return done(null, user);
         } else {
           // passwords do not match!
-          console.log('login failure');
 
           return done(null, false, { message: 'Incorrect password' });
         }
@@ -70,6 +68,7 @@ app.use(
   session({
     secret: 'theToppestOfSecrets',
     resave: false,
+    store: new MongoStore(),
     cookie: { maxAge: 3600000 },
     saveUninitialized: true,
   })
