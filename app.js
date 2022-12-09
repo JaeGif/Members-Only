@@ -12,7 +12,7 @@ require('dotenv').config();
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const User = require('./models/user');
-const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo');
 
 const mongoDb = process.env.MONGO_CONNECT;
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
@@ -68,7 +68,7 @@ app.use(
   session({
     secret: 'theToppestOfSecrets',
     resave: false,
-    store: new MongoStore(),
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_CONNECT }),
     cookie: { maxAge: 3600000 },
     saveUninitialized: true,
   })
