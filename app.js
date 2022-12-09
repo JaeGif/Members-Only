@@ -100,7 +100,7 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-app.listen(`0.0.0.0:$PORT`);
+app.listen(process.env.$PORT);
 
 module.exports = app;
 // push 16
