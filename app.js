@@ -15,7 +15,10 @@ const User = require('./models/user');
 
 const mongoDb = process.env.MONGO_CONNECT;
 mongoose
-  .connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true })
+  .connect(
+    'mongodb+srv://jaegif:9mgq45TAkke0t4fs@cluster0.835ydrt.mongodb.net/?retryWrites=true&w=majority',
+    { useUnifiedTopology: true, useNewUrlParser: true }
+  )
   .then(console.log('connected'));
 
 const db = mongoose.connection;
@@ -100,6 +103,6 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-app.listen($PORT);
+app.listen(3000);
 module.exports = app;
 // push 16
