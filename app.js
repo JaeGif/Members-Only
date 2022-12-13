@@ -13,8 +13,9 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const User = require('./models/user');
 
+const mongoDb = MONGO_CONNECT;
 mongoose
-  .connect(MONGO_CONNECT, { useUnifiedTopology: true, useNewUrlParser: true })
+  .connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(console.log('connected'));
 
 const db = mongoose.connection;
@@ -100,3 +101,4 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+// push 16
