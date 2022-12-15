@@ -13,7 +13,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const User = require('./models/user');
 
-const mongoDb = process.env.MONGO_CONNECT;
+const mongoDb = MONGO_URL;
 mongoose
   .connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(console.log('connected'));
